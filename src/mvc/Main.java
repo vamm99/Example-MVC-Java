@@ -5,7 +5,7 @@
  */
 package mvc;
 
-import mvc.controller.messageController;
+import mvc.controller.peopleController;
 
 /**
  *
@@ -17,13 +17,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        messageController controller;
-        
-        controller = new messageController();
-        controller.showView();
-       
-        
+        peopleController c ;
+        c = new peopleController();
+        c.showView();
     }
     
 }
