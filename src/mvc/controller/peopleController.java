@@ -6,6 +6,7 @@
 package mvc.controller;
 
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import mvc.model.arrayPeople;
 import mvc.model.people;
 import mvc.view.viewPeople;
@@ -14,15 +15,19 @@ import mvc.view.viewPeople;
  *
  * @author ASUS
  */
-public class peopleController {
+public final class peopleController {
 
     private people p;
     private final arrayPeople a;
     private final viewPeople v;
+    private final DefaultTableModel model;
+    private final String[] column = {"Id", "Age", "Name", "Last Name"};
 
     public peopleController() {
         a = new arrayPeople();
         v = new viewPeople();
+        model = new DefaultTableModel(null,column);
+        v.setTableModel(model);
         eventAddPeople();
     }
 
@@ -58,6 +63,12 @@ public class peopleController {
         this.a.addPeople(p);
         System.out.println("Persona agregada con éxito.");
         this.showPeople();
+        this.addPeopleTableController(id, age, names, lastname);
+    }
+    
+    public void addPeopleTableController(int id, int age, String name, String lastName){
+        this.model.addRow(new Object[]{id, age, name, lastName});
+        this.v.setTableModel(model);
     }
 
     public void showPeople() {
