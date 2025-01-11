@@ -17,16 +17,15 @@ import mvc.view.viewPeople;
  */
 public final class peopleController {
 
-    private people p;
     private final arrayPeople a;
     private final viewPeople v;
     private final DefaultTableModel model;
-    private final String[] column = {"Id", "Age", "Name", "Last Name"};
 
     public peopleController() {
         a = new arrayPeople();
         v = new viewPeople();
-        model = new DefaultTableModel(null,column);
+        String[] column = {"Id", "Age", "Name", "Last Name"};
+        model = new DefaultTableModel(null, column);
         v.setTableModel(model);
         eventAddPeople();
     }
@@ -58,9 +57,9 @@ public final class peopleController {
             return;
         }
 
-        p = new people(id, age, names, lastname);
+        people p = new people(id, age, names, lastname);
 
-        this.a.addPeople(p);
+        a.addPeople(p);
         System.out.println("Persona agregada con éxito.");
         this.showPeople();
         this.addPeopleTableController(id, age, names, lastname);
@@ -74,9 +73,9 @@ public final class peopleController {
     public void showPeople() {
         ArrayList<people> lp = this.a.getListPeople();
 
-        lp.forEach((pe) -> {
+        for (people pe : lp) {
             System.out.println(pe);
-        });
+        }
     }
 
     public void showView() {

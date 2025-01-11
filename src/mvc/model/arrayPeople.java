@@ -13,18 +13,18 @@ import java.util.ArrayList;
  */
 public class arrayPeople {
 
-    private final ArrayList<people> listPeople;
+    private  ArrayList<people> listPeople;
 
     public arrayPeople() {
-        this.listPeople = new ArrayList<>();
+        listPeople = new ArrayList<>();
     }
 
     public void addPeople(people p) {
-        this.listPeople.add(p);
+        listPeople.add(p);
     }
 
     public ArrayList<people> getListPeople() {
-        return this.listPeople;
+        return listPeople;
     }
 
 }
